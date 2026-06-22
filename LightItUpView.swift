@@ -233,7 +233,7 @@ struct LightItUpView: View {
                 cards = nextLevel.makeCards()
                 feedbackText = "Faster now!"
                 feedbackColor = nextLevel.glowColor
-                await showLevelUpFlash()
+                showLevelUpFlash()
             }
         }
 
@@ -278,20 +278,21 @@ struct LightItUpView: View {
         feedbackColor = .red
     }
 
-    @MainActor
-    private func showLevelUpFlash() async {
+    private func showLevelUpFlash() {
         withAnimation(.spring(duration: 0.25)) {
             showLevelFlash = true
         }
 
-        do {
-            try await Task.sleep(for: .seconds(0.7))
-        } catch {
-            return
-        }
+        Task { @MainActor in
+            do {
+                try await Task.sleep(for: .seconds(0.7))
+            } catch {
+                return
+            }
 
-        withAnimation(.easeOut(duration: 0.2)) {
-            showLevelFlash = false
+            withAnimation(.easeOut(duration: 0.2)) {
+                showLevelFlash = false
+            }
         }
     }
 
@@ -358,7 +359,7 @@ private enum LightItUpLevel: Int, Equatable {
     }
 
     func makeCards() -> [LightCard] {
-        Array(repeating: LightCard(), count: cardCount)
+        (0..<cardCount).map { _ in LightCard() }
     }
 
     static func level(elapsedSeconds: Int) -> LightItUpLevel {

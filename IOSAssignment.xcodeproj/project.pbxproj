@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A447D4A42FE9D622001A2C07 /* TapFrenzyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A447D4A32FE9D622001A2C07 /* TapFrenzyView.swift */; };
+		A447D4A62FE9D65C001A2C07 /* LightItUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A447D4A52FE9D65C001A2C07 /* LightItUpView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A409AFD42FE9779A00EAD264 /* IOSAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A447D4A32FE9D622001A2C07 /* TapFrenzyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFrenzyView.swift; sourceTree = "<group>"; };
+		A447D4A52FE9D65C001A2C07 /* LightItUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightItUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -34,6 +41,8 @@
 			children = (
 				A409AFD62FE9779A00EAD264 /* IOSAssignment */,
 				A409AFD52FE9779A00EAD264 /* Products */,
+				A447D4A32FE9D622001A2C07 /* TapFrenzyView.swift */,
+				A447D4A52FE9D65C001A2C07 /* LightItUpView.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +128,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A447D4A42FE9D622001A2C07 /* TapFrenzyView.swift in Sources */,
+				A447D4A62FE9D65C001A2C07 /* LightItUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
