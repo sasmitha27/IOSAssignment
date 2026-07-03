@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A43E7F8D2FF8029A00ADEF9D /* QuizRushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E7F8C2FF8029A00ADEF9D /* QuizRushView.swift */; };
 		A447D4A42FE9D622001A2C07 /* TapFrenzyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A447D4A32FE9D622001A2C07 /* TapFrenzyView.swift */; };
 		A447D4A62FE9D65C001A2C07 /* LightItUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A447D4A52FE9D65C001A2C07 /* LightItUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A409AFD42FE9779A00EAD264 /* IOSAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A43E7F8C2FF8029A00ADEF9D /* QuizRushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRushView.swift; sourceTree = "<group>"; };
 		A447D4A32FE9D622001A2C07 /* TapFrenzyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFrenzyView.swift; sourceTree = "<group>"; };
 		A447D4A52FE9D65C001A2C07 /* LightItUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightItUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +45,7 @@
 				A409AFD52FE9779A00EAD264 /* Products */,
 				A447D4A32FE9D622001A2C07 /* TapFrenzyView.swift */,
 				A447D4A52FE9D65C001A2C07 /* LightItUpView.swift */,
+				A43E7F8C2FF8029A00ADEF9D /* QuizRushView.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A43E7F8D2FF8029A00ADEF9D /* QuizRushView.swift in Sources */,
 				A447D4A42FE9D622001A2C07 /* TapFrenzyView.swift in Sources */,
 				A447D4A62FE9D65C001A2C07 /* LightItUpView.swift in Sources */,
 			);

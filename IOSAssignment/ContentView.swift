@@ -61,6 +61,19 @@ struct ContentView: View {
                                 highScore: lightItUpHighScore
                             )
                         }
+
+                        NavigationLink {
+                            QuizRushView()
+                        } label: {
+                            gameCard(
+                                title: "Quiz Rush",
+                                subtitle: "Answer live trivia from Open Trivia DB.",
+                                icon: "questionmark.bubble.fill",
+                                color: .mint,
+                                badgeText: "Live API",
+                                badgeIcon: "network"
+                            )
+                        }
                     }
                     .padding(24)
                     .padding(.top, 24)
@@ -75,7 +88,9 @@ struct ContentView: View {
         subtitle: String,
         icon: String,
         color: Color,
-        highScore: Int
+        highScore: Int? = nil,
+        badgeText: String? = nil,
+        badgeIcon: String = "trophy.fill"
     ) -> some View {
         HStack(spacing: 18) {
             Image(systemName: icon)
@@ -94,9 +109,11 @@ struct ContentView: View {
                     .foregroundStyle(.white.opacity(0.72))
                     .multilineTextAlignment(.leading)
 
-                Label("Best: \(highScore)", systemImage: "trophy.fill")
-                    .font(.caption.bold())
-                    .foregroundStyle(.yellow)
+                if let badge = highScore.map({ "Best: \($0)" }) ?? badgeText {
+                    Label(badge, systemImage: badgeIcon)
+                        .font(.caption.bold())
+                        .foregroundStyle(.yellow)
+                }
             }
 
             Spacer()
