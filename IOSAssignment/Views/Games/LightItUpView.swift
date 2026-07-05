@@ -9,6 +9,8 @@ struct LightItUpView: View {
     private let roundDuration = 60
 
     @AppStorage("lightItUpHighScore") private var highScore = 0
+    @EnvironmentObject private var sessionStore: GameSessionStore
+    @EnvironmentObject private var locationService: LocationService
 
     @State private var score = 0
     @State private var remainingTime = 60
@@ -129,39 +131,14 @@ struct LightItUpView: View {
     }
 
     private var gameOverView: some View {
-        VStack(spacing: 22) {
-            Image(systemName: score >= highScore && score > 0 ? "trophy.fill" : "lightbulb.slash.fill")
-                .font(.system(size: 64))
-                .foregroundStyle(.yellow)
-
-            Text("TIME'S UP")
-                .font(.system(size: 42, weight: .black, design: .rounded))
-                .foregroundStyle(.white)
-
-            VStack(spacing: 8) {
-                Text("FINAL SCORE")
-                    .font(.headline)
-                    .foregroundStyle(.white.opacity(0.7))
-                Text("\(score)")
-                    .font(.system(size: 72, weight: .black, design: .rounded))
-                    .foregroundStyle(.white)
-            }
-
-            Text(score == highScore && score > 0 ? "New high score!" : "High score: \(highScore)")
-                .font(.title3.bold())
-                .foregroundStyle(.yellow)
-
-            Button(action: startNewRound) {
-                Label("Play Again", systemImage: "arrow.clockwise")
-                    .font(.title3.bold())
-                    .foregroundStyle(.indigo)
-                    .padding(.horizontal, 30)
-                    .padding(.vertical, 16)
-                    .background(.white, in: Capsule())
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(32)
+        ResultView(
+            title: "TIME'S UP",
+            mode: .lightItUp,
+            score: score,
+            bestText: score == highScore && score > 0 ? "New high score!" : "High score: \(highScore)",
+            primaryActionTitle: "Play Again",
+            primaryAction: startNewRound
+        )
     }
 
     private var levelFlash: some View {
@@ -240,6 +217,7 @@ struct LightItUpView: View {
         guard remainingTime == 0 else { return }
         cards.indices.forEach { cards[$0].isLit = false }
         highScore = max(highScore, score)
+        sessionStore.addSession(mode: .lightItUp, score: score, coordinate: locationService.currentCoordinate)
         isPlaying = false
     }
 
@@ -376,4 +354,6 @@ private enum LightItUpLevel: Int, Equatable {
     NavigationStack {
         LightItUpView()
     }
+    .environmentObject(GameSessionStore())
+    .environmentObject(LocationService())
 }

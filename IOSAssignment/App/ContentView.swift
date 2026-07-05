@@ -1,4 +1,5 @@
 import Charts
+import Combine
 import CoreLocation
 import MapKit
 import SwiftUI
@@ -143,6 +144,10 @@ final class LocationService: NSObject, ObservableObject {
     }
 
     func requestPermission() {
+        guard Bundle.main.object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") != nil else {
+            return
+        }
+
         switch manager.authorizationStatus {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()

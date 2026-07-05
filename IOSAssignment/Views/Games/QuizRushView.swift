@@ -387,6 +387,9 @@ private enum QuizSound {
 
 struct QuizRushView: View {
     @StateObject private var viewModel = QuizRushViewModel()
+    @EnvironmentObject private var sessionStore: GameSessionStore
+    @EnvironmentObject private var locationService: LocationService
+    @State private var didRecordSession = false
 
     var body: some View {
         ZStack {
@@ -403,6 +406,11 @@ struct QuizRushView: View {
         .navigationTitle("Quiz Rush")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .onChange(of: viewModel.state) { _, newState in
+            if newState == .finished {
+                recordFinishedSession()
+            }
+        }
     }
 
     @ViewBuilder
@@ -475,9 +483,7 @@ struct QuizRushView: View {
                 }
 
                 Button {
-                    Task {
-                        await viewModel.startGame()
-                    }
+                    startGame()
                 } label: {
                     Label("Start Rush", systemImage: "play.fill")
                         .font(.title3.bold())
@@ -538,9 +544,7 @@ struct QuizRushView: View {
                 }
 
                 Button {
-                    Task {
-                        await viewModel.startGame()
-                    }
+                    startGame()
                 } label: {
                     Label("Retry", systemImage: "arrow.clockwise")
                         .font(.headline.bold())
@@ -683,6 +687,15 @@ struct QuizRushView: View {
                 }
 
                 HStack(spacing: 12) {
+                    ShareLink(item: GameMode.quizRush.shareText(score: viewModel.score)) {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                            .font(.headline.bold())
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 18)
+                            .padding(.vertical, 14)
+                            .background(.white.opacity(0.16), in: Capsule())
+                    }
+
                     Button {
                         viewModel.returnToSetup()
                     } label: {
@@ -695,9 +708,7 @@ struct QuizRushView: View {
                     }
 
                     Button {
-                        Task {
-                            await viewModel.startGame()
-                        }
+                        startGame()
                     } label: {
                         Label("Play Again", systemImage: "arrow.clockwise")
                             .font(.headline.bold())
@@ -715,6 +726,19 @@ struct QuizRushView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .scrollIndicators(.visible)
+    }
+
+    private func startGame() {
+        didRecordSession = false
+        Task {
+            await viewModel.startGame()
+        }
+    }
+
+    private func recordFinishedSession() {
+        guard !didRecordSession else { return }
+        didRecordSession = true
+        sessionStore.addSession(mode: .quizRush, score: viewModel.score, coordinate: locationService.currentCoordinate)
     }
 
     private func selectorSection<Content: View>(title: String, icon: String, @ViewBuilder content: () -> Content) -> some View {
@@ -883,4 +907,6 @@ private extension String {
     NavigationStack {
         QuizRushView()
     }
+    .environmentObject(GameSessionStore())
+    .environmentObject(LocationService())
 }

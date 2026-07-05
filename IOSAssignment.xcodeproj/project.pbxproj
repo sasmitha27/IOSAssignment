@@ -6,22 +6,36 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		A43E7F8D2FF8029A00ADEF9D /* QuizRushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43E7F8C2FF8029A00ADEF9D /* QuizRushView.swift */; };
-		A447D4A42FE9D622001A2C07 /* TapFrenzyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A447D4A32FE9D622001A2C07 /* TapFrenzyView.swift */; };
-		A447D4A62FE9D65C001A2C07 /* LightItUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A447D4A52FE9D65C001A2C07 /* LightItUpView.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		A409AFD42FE9779A00EAD264 /* IOSAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A43E7F8C2FF8029A00ADEF9D /* QuizRushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRushView.swift; sourceTree = "<group>"; };
-		A447D4A32FE9D622001A2C07 /* TapFrenzyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapFrenzyView.swift; sourceTree = "<group>"; };
-		A447D4A52FE9D65C001A2C07 /* LightItUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightItUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A41DDF8E2FFAD9130022BEA0 /* Exceptions for "IOSAssignment" folder in "IOSAssignment" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/GameMode.swift,
+				Models/GameSession.swift,
+				Services/GameSessionStore.swift,
+				Services/LocationService.swift,
+				Services/NotificationService.swift,
+				Views/Shared/ResultView.swift,
+				Views/Shared/ScoreBadge.swift,
+				Views/Tabs/HomeTab.swift,
+				Views/Tabs/MapTab.swift,
+				Views/Tabs/SettingsTab.swift,
+				Views/Tabs/StatsTab.swift,
+			);
+			target = A409AFD32FE9779A00EAD264 /* IOSAssignment */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A409AFD62FE9779A00EAD264 /* IOSAssignment */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A41DDF8E2FFAD9130022BEA0 /* Exceptions for "IOSAssignment" folder in "IOSAssignment" target */,
+			);
 			path = IOSAssignment;
 			sourceTree = "<group>";
 		};
@@ -43,9 +57,11 @@
 			children = (
 				A409AFD62FE9779A00EAD264 /* IOSAssignment */,
 				A409AFD52FE9779A00EAD264 /* Products */,
-				A447D4A32FE9D622001A2C07 /* TapFrenzyView.swift */,
-				A447D4A52FE9D65C001A2C07 /* LightItUpView.swift */,
-				A43E7F8C2FF8029A00ADEF9D /* QuizRushView.swift */,
+				A41DDF732FFAD7A90022BEA0 /* Models */,
+				A41DDF742FFAD7A90022BEA0 /* Services */,
+				A41DDF752FFAD7A90022BEA0 /* ViewModels */,
+				A41DDF762FFAD7AF0022BEA0 /* Views */,
+				A41DDF852FFAD8A60022BEA0 /* App */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +71,65 @@
 				A409AFD42FE9779A00EAD264 /* IOSAssignment.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A41DDF732FFAD7A90022BEA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A41DDF742FFAD7A90022BEA0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A41DDF752FFAD7A90022BEA0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A41DDF762FFAD7AF0022BEA0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A41DDF772FFAD7B20022BEA0 /* Tabs */,
+				A41DDF782FFAD7B20022BEA0 /* Shared */,
+				A41DDF792FFAD7B30022BEA0 /* Games */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A41DDF772FFAD7B20022BEA0 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		A41DDF782FFAD7B20022BEA0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A41DDF792FFAD7B30022BEA0 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		A41DDF852FFAD8A60022BEA0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,9 +206,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A43E7F8D2FF8029A00ADEF9D /* QuizRushView.swift in Sources */,
-				A447D4A42FE9D622001A2C07 /* TapFrenzyView.swift in Sources */,
-				A447D4A62FE9D65C001A2C07 /* LightItUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
