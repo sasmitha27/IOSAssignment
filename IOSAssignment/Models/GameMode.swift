@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// The playable modes used by session history, stats, map pins, and sharing.
 enum GameMode: String, CaseIterable, Codable, Identifiable {
     case tapFrenzy
     case lightItUp
